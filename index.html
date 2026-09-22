@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+
+<html lang="id" style=""><head>
+<base target="_top"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Domain Billing Transfer - Modern UI/UX</title>
+<!-- Google Fonts & Tailwind CDN -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              900: '#1e3a8a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    body::-webkit-scrollbar { display: none; }
+    .screen {
+      display: none;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .screen.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-brand-500 selection:text-white">
+<!-- TOP HEADER -->
+<!-- MAIN BODY CONTAINER -->
+<main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-8 md:py-12">
+<!-- ==============================================
+         SCREEN 1: INTRO / ONBOARDING
+    ============================================== -->
+<section class="screen active" id="screen-intro"><!-- HERO HEADER & CONTEXT -->
+<div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-brand-900 to-slate-900 text-white p-6 sm:p-10 mb-8 shadow-xl border border-slate-800">
+<div class="absolute -right-16 -top-16 w-80 h-80 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute right-1/4 -bottom-16 w-64 h-64 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<div class="lg:col-span-7">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-white text-xs font-semibold uppercase tracking-wider mb-4">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        Dokumen Otorisasi Resmi • ICANN IRTP &amp; PANDI
+      </div>
+<h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight mb-3">
+        Persetujuan &amp; Otorisasi Pemindahan Billing Domain
+      </h1>
+<p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+        Surat persetujuan elektronik penyerahan dan pembaruan hak delegasi penagihan (billing contact) domain terdaftar. Mohon tinjau klausul otorisasi sebelum melanjutkan pemutakhiran data 4 kontak legal.
+      </p>
+<div class="flex flex-wrap items-center gap-3 text-xs text-slate-300 font-medium">
+<span class="inline-flex items-center gap-1.5 bg-white/10 px-2.5 py-1 rounded-lg border border-white/10">
+<svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path>
+</svg>
+          Enkripsi TLS 256-bit Terproteksi
+        </span>
+<span class="inline-flex items-center gap-1.5 bg-white/10 px-2.5 py-1 rounded-lg border border-white/10">
+<svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path>
+</svg>
+          Zero Downtime DNS Guarantee
+        </span>
+<span class="inline-flex items-center gap-1.5 bg-white/10 px-2.5 py-1 rounded-lg border border-white/10">
+<svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path>
+</svg>
+          Audit Trail Terverifikasi
+        </span>
+</div>
+</div>
+<!-- Domain Detail Context Card -->
+<div class="lg:col-span-5">
+<div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-5 sm:p-6 shadow-2xl relative overflow-hidden">
+<div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-white/10 text-xs">
+<span class="text-slate-300 font-semibold uppercase tracking-wider text-[11px]">Konteks Domain Terdaftar</span>
+<span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-[10px] font-bold">Transfer Ready</span>
+</div>
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center shrink-0">
+<svg class="w-5 h-5 text-indigo-300" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="truncate">
+<div class="text-lg font-mono font-bold text-white tracking-wide truncate">masjidrahmatan.id</div>
+<div class="text-[11px] text-slate-300">Registry: PANDI (.ID ccTLD) • Auth-Code: Verified</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 text-xs pt-2 border-t border-white/10">
+<div class="bg-white/5 rounded-lg p-2.5 border border-white/5">
+<span class="text-[10px] text-slate-400 block uppercase font-mono">Registrar Tujuan</span>
+<span class="font-bold text-slate-200 text-xs">ID-REG-TIER1</span>
+</div>
+<div class="bg-white/5 rounded-lg p-2.5 border border-white/5">
+<span class="text-[10px] text-slate-400 block uppercase font-mono">Status Permintaan</span>
+<span class="font-bold text-amber-300 text-xs">Menunggu Otorisasi</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION: RINGKASAN KLAUSUL OTORISASI & DISCLAIMER -->
+<div class="mb-8">
+<div class="text-center sm:text-left mb-5">
+<h2 class="text-lg sm:text-xl font-bold text-slate-900">Klausul Ringkasan Persetujuan Transfer</h2>
+<p class="text-xs text-slate-500">Poin transparansi regulasi dan perlindungan hukum atas proses pemindahan kontak penagihan domain Anda.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Klausul 1 -->
+<div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs hover:border-brand-200 transition-colors flex gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-blue-50 text-brand-600 flex items-center justify-center shrink-0 border border-blue-100">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h3 class="text-sm font-bold text-slate-900">Pembaruan 4 Kontak Legal</h3>
+<span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-semibold">RFC 5730</span>
+</div>
+<p class="text-xs text-slate-600 leading-relaxed">
+          Memberikan izin pembaruan struktur kontak WHOIS/RDAP lengkap (<span class="font-medium text-slate-900">Registrant, Technical, Billing, Admin</span>) untuk sinkronisasi penagihan invoice tahunan ke registrar tujuan.
+        </p>
+</div>
+</div>
+<!-- Klausul 2 -->
+<div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs hover:border-brand-200 transition-colors flex gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0 border border-indigo-100">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h3 class="text-sm font-bold text-slate-900">Kepatuhan Regulasi ICANN &amp; PANDI</h3>
+<span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold">IRTP-C Standard</span>
+</div>
+<p class="text-xs text-slate-600 leading-relaxed">
+          Prosedur perpindahan billing mematuhi kebijakan ICANN Inter-Registrar Transfer Policy (IRTP) dan ketentuan verifikasi identitas resmi pengelola ccTLD .ID (PANDI).
+        </p>
+</div>
+</div>
+<!-- Klausul 3 -->
+<div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs hover:border-brand-200 transition-colors flex gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-100">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h3 class="text-sm font-bold text-slate-900">Jaminan Operasional (Zero Downtime)</h3>
+<span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold">DNS Active</span>
+</div>
+<p class="text-xs text-slate-600 leading-relaxed">
+          Delegasi billing hanya mengubah otoritas akun pembayaran. Server nama DNS (Nameservers), record domain, dan operasional website/email tetap berjalan tanpa henti (100% uptime).
+        </p>
+</div>
+</div>
+<!-- Klausul 4 -->
+<div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs hover:border-brand-200 transition-colors flex gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center shrink-0 border border-slate-200">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h3 class="text-sm font-bold text-slate-900">Kepemilikan Sah &amp; Hak Delegasi</h3>
+<span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-semibold">Legal Validated</span>
+</div>
+<p class="text-xs text-slate-600 leading-relaxed">
+          Pemberi otorisasi menyatakan mempunyai kapasitas legal penuh atas nama badan hukum/pemilik domain untuk menandatangani perpindahan billing tanpa paksaan pihak lain.
+        </p>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION: LEMBAR PERNYATAAN & TANDA PERSETUJUAN (CONSENT BOX) -->
+<div class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 mb-8 shadow-xs ring-1 ring-slate-100">
+<div class="flex items-center justify-between pb-4 mb-5 border-b border-slate-100">
+<div class="flex items-center gap-2.5">
+<div class="w-3 h-3 rounded-full bg-brand-600"></div>
+<h3 class="text-sm sm:text-base font-bold text-slate-900">Lembar Pernyataan &amp; Tanda Otorisasi Formal</h3>
+</div>
+<span class="text-[11px] font-mono text-slate-400 bg-slate-50 px-2 py-1 rounded-md border border-slate-200">DOC-REF: AUTH-ID-2025</span>
+</div>
+<div class="space-y-4 mb-6">
+<!-- Checkbox 1 -->
+<label class="flex items-start gap-3.5 p-3.5 rounded-xl border border-slate-200 hover:border-brand-200 bg-slate-50/50 hover:bg-blue-50/30 cursor-pointer transition-all select-none">
+<input class="w-5 h-5 mt-0.5 rounded border-slate-300 text-brand-600 focus:ring-brand-500 focus:ring-offset-0 cursor-pointer shrink-0" id="agreement1" onchange="toggleDualConsent()" type="checkbox"/>
+<div class="text-xs text-slate-700 leading-relaxed">
+<span class="font-bold text-slate-900 block mb-0.5">Kapasitas Legal &amp; Kepemilikan Domain</span>
+        Saya mengonfirmasi bahwa saya adalah pemilik sah atau perwakilan resmi yang berwenang atas domain <strong class="text-slate-900 font-mono">masjidrahmatan.id</strong> dan memiliki hak penuh memberikan instruksi penyesuaian delegasi penagihan.
+      </div>
+</label>
+<!-- Checkbox 2 -->
+<label class="flex items-start gap-3.5 p-3.5 rounded-xl border border-slate-200 hover:border-brand-200 bg-slate-50/50 hover:bg-blue-50/30 cursor-pointer transition-all select-none">
+<input class="w-5 h-5 mt-0.5 rounded border-slate-300 text-brand-600 focus:ring-brand-500 focus:ring-offset-0 cursor-pointer shrink-0" id="agreement2" onchange="toggleDualConsent()" type="checkbox"/>
+<div class="text-xs text-slate-700 leading-relaxed">
+<span class="font-bold text-slate-900 block mb-0.5">Persetujuan Sinkronisasi 4 Kontak Billing</span>
+        Saya menyetujui pembaruan dan penyelarasan data 4 kontak legal (Registrant, Tech, Billing, Admin) ke registrar tujuan dan mematuhi regulasi transfer ICANN &amp; PANDI tanpa sengketa.
+      </div>
+</label>
+</div>
+<!-- Security Callout & Audit Log Badge -->
+<div class="bg-slate-50 border border-dashed border-slate-200 rounded-xl p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-slate-500">
+<div class="flex items-center gap-2">
+<svg class="w-4 h-4 text-emerald-600 shrink-0" fill="currentColor" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path>
+</svg>
+<span>Enkripsi Sesi: <strong>TLS_AES_256_GCM_SHA384</strong> • FOA Secure Handshake</span>
+</div>
+<div class="font-mono text-[11px] text-slate-400">
+      Timestamp: SGT (UTC+7) Live Session
+    </div>
+</div>
+</div>
+<!-- SECTION: CTA BUTTON & ESTIMATION -->
+<div class="text-center max-w-md mx-auto">
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-700 hover:to-indigo-700 active:scale-98 disabled:opacity-40 disabled:cursor-not-allowed shadow-lg shadow-brand-600/25 transition-all" disabled="" id="startButton" onclick="startForm()">
+<span>Setujui &amp; Mulai Pengisian Data Kontak</span>
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+</button>
+<p class="text-[11px] text-slate-400 mt-2 flex items-center justify-center gap-1.5">
+<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+    Langkah 1 dari 4 • Diperlukan waktu ~2-3 menit • Otomatisasi aktif
+  </p>
+</div></section>
+<!-- ==============================================
+         SCREEN 2: MULTI-STEP CONTACT FORM
+    ============================================== -->
+<section class="screen" id="screen-form">
+<div class="max-w-3xl mx-auto">
+<!-- Form Header & Stepper Indicator -->
+<div class="mb-8">
+<div class="flex items-center justify-between mb-4">
+<div>
+<span class="text-xs font-bold text-brand-600 uppercase tracking-wider" id="currentSectionBadge">Langkah 1 dari 4</span>
+<h2 class="text-2xl font-extrabold text-slate-900 mt-1" id="currentSectionHeading">Registrant Contact</h2>
+</div>
+<!-- Quick Auto-sync Banner Toggle for non-registrant steps -->
+<div class="hidden sm:flex items-center gap-2 bg-brand-50 border border-brand-200 px-3 py-1.5 rounded-lg text-xs font-medium text-brand-800" id="quickSyncPill">
+<svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">Fitur Sinkronisasi Aktif</span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="h-2 w-full bg-slate-200 rounded-full overflow-hidden mb-5">
+<div class="h-full bg-brand-600 rounded-full transition-all duration-300" id="progressBar" style="width: 25%;"></div>
+</div>
+<!-- 4 Tab Steps -->
+<div class="grid grid-cols-4 gap-2">
+<button class="step flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-2 p-2.5 rounded-xl border border-brand-500 bg-brand-50/70 text-brand-700 text-xs font-bold transition-all" id="step-1" onclick="goToStep(1)">
+<span class="step-badge w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center text-xs">1</span>
+<span class="truncate">Registrant</span>
+</button>
+<button class="step flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-2 p-2.5 rounded-xl border border-slate-200 bg-white text-slate-500 text-xs font-semibold hover:border-slate-300 transition-all" id="step-2" onclick="goToStep(2)">
+<span class="step-badge w-6 h-6 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-xs">2</span>
+<span class="truncate">Technical</span>
+</button>
+<button class="step flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-2 p-2.5 rounded-xl border border-slate-200 bg-white text-slate-500 text-xs font-semibold hover:border-slate-300 transition-all" id="step-3" onclick="goToStep(3)">
+<span class="step-badge w-6 h-6 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-xs">3</span>
+<span class="truncate">Billing</span>
+</button>
+<button class="step flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-2 p-2.5 rounded-xl border border-slate-200 bg-white text-slate-500 text-xs font-semibold hover:border-slate-300 transition-all" id="step-4" onclick="goToStep(4)">
+<span class="step-badge w-6 h-6 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-xs">4</span>
+<span class="truncate">Admin</span>
+</button>
+</div>
+<div class="hidden mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs font-medium text-amber-800" id="stepNotice" role="alert"></div>
+</div>
+<!-- Master Card -->
+<div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+<!-- Helper Notification / Auto-copy Banner (Registrant Only) -->
+<div class="mb-6 p-4 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 flex items-center justify-between gap-4" id="copyToAllBanner">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-900">Salin ke Semua Kontak (Recommended)</h4>
+<p class="text-xs text-slate-600">Aktifkan untuk menyalin dan mengunci data Registrant pada Kontak Teknis, Billing, dan Administratif.</p>
+</div>
+</div>
+<!-- Switch -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" id="autoCopySwitch" onchange="toggleAutoSync(this.checked)" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-600"></div>
+</label>
+</div>
+<!-- Non-Registrant Sync Indicator Notice -->
+<div class="hidden mb-6 p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs flex items-center justify-between" id="syncNoticeNonRegistrant">
+<div class="flex items-center gap-2">
+<svg class="w-4 h-4 text-amber-600 shrink-0" fill="currentColor" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" fill-rule="evenodd"></path>
+</svg>
+<span class="">Kolom terisi otomatis dari data <strong>Registrant</strong> dan dikunci agar seluruh kontak tetap sama. Nonaktifkan switch untuk mengubahnya.</span>
+</div>
+<button class="text-xs font-bold text-brand-600 hover:text-brand-700 underline shrink-0" onclick="resyncFromRegistrant()" type="button">
+              Sinkronkan Ulang
+            </button>
+</div>
+<!-- Section 1: Registrant Form -->
+<div class="form-section" id="section-registrant">
+<div id="registrant-fields"><div class="grid grid-cols-1 sm:grid-cols-2 gap-4"><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">First Name <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="registrant-firstName" name="firstName" placeholder="cth. Budi" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="registrant-firstName-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Last Name <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="registrant-lastName" name="lastName" placeholder="cth. Santoso" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="registrant-lastName-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Company / Organization <span class="text-slate-400 font-normal text-[11px]">(Opsional)</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="registrant-companyName" name="companyName" placeholder="PT Nusantara Solusi (Opsional)" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="registrant-companyName-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Email Address <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="registrant-email" name="email" placeholder="budi@perusahaan.id" type="email"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="registrant-email-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Phone Number <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="registrant-phone" name="phone" placeholder="+62 812-3456-7890" type="tel"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="registrant-phone-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Fax Number <span class="text-slate-400 font-normal text-[11px]">(Opsional)</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="registrant-fax" name="fax" placeholder="+62 21-5550192 (Opsional)" type="tel"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="registrant-fax-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5 sm:col-span-2"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Address Line 1 <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="registrant-address1" name="address1" placeholder="Jl. Jenderal Sudirman No. 45" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="registrant-address1-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5 sm:col-span-2"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Address Line 2 <span class="text-slate-400 font-normal text-[11px]">(Opsional)</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="registrant-address2" name="address2" placeholder="Gedung Cyber 2 Lantai 12 (Opsional)" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="registrant-address2-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">City <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="registrant-city" name="city" placeholder="Jakarta Selatan" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="registrant-city-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">State / Province <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="registrant-state" name="state" placeholder="DKI Jakarta" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="registrant-state-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Postal Code <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="registrant-postcode" name="postcode" placeholder="12190" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="registrant-postcode-error">Kolom ini wajib diisi.</div></div></div></div>
+</div>
+<!-- Section 2: Technical Form -->
+<div class="form-section hidden" id="section-technical">
+<div id="technical-fields"><div class="grid grid-cols-1 sm:grid-cols-2 gap-4"><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">First Name <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="technical-firstName" name="firstName" placeholder="cth. Budi" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="technical-firstName-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Last Name <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="technical-lastName" name="lastName" placeholder="cth. Santoso" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="technical-lastName-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Company / Organization <span class="text-slate-400 font-normal text-[11px]">(Opsional)</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="technical-companyName" name="companyName" placeholder="PT Nusantara Solusi (Opsional)" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="technical-companyName-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Email Address <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="technical-email" name="email" placeholder="budi@perusahaan.id" type="email"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="technical-email-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Phone Number <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="technical-phone" name="phone" placeholder="+62 812-3456-7890" type="tel"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="technical-phone-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Fax Number <span class="text-slate-400 font-normal text-[11px]">(Opsional)</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="technical-fax" name="fax" placeholder="+62 21-5550192 (Opsional)" type="tel"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="technical-fax-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5 sm:col-span-2"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Address Line 1 <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="technical-address1" name="address1" placeholder="Jl. Jenderal Sudirman No. 45" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="technical-address1-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5 sm:col-span-2"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Address Line 2 <span class="text-slate-400 font-normal text-[11px]">(Opsional)</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="technical-address2" name="address2" placeholder="Gedung Cyber 2 Lantai 12 (Opsional)" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="technical-address2-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">City <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="technical-city" name="city" placeholder="Jakarta Selatan" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="technical-city-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">State / Province <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="technical-state" name="state" placeholder="DKI Jakarta" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="technical-state-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Postal Code <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="technical-postcode" name="postcode" placeholder="12190" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="technical-postcode-error">Kolom ini wajib diisi.</div></div></div></div>
+</div>
+<!-- Section 3: Billing Form -->
+<div class="form-section hidden" id="section-billing">
+<div id="billing-fields"><div class="grid grid-cols-1 sm:grid-cols-2 gap-4"><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">First Name <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="billing-firstName" name="firstName" placeholder="cth. Budi" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="billing-firstName-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Last Name <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="billing-lastName" name="lastName" placeholder="cth. Santoso" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="billing-lastName-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Company / Organization <span class="text-slate-400 font-normal text-[11px]">(Opsional)</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="billing-companyName" name="companyName" placeholder="PT Nusantara Solusi (Opsional)" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="billing-companyName-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Email Address <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="billing-email" name="email" placeholder="budi@perusahaan.id" type="email"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="billing-email-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Phone Number <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="billing-phone" name="phone" placeholder="+62 812-3456-7890" type="tel"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="billing-phone-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Fax Number <span class="text-slate-400 font-normal text-[11px]">(Opsional)</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="billing-fax" name="fax" placeholder="+62 21-5550192 (Opsional)" type="tel"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="billing-fax-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5 sm:col-span-2"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Address Line 1 <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="billing-address1" name="address1" placeholder="Jl. Jenderal Sudirman No. 45" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="billing-address1-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5 sm:col-span-2"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Address Line 2 <span class="text-slate-400 font-normal text-[11px]">(Opsional)</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="billing-address2" name="address2" placeholder="Gedung Cyber 2 Lantai 12 (Opsional)" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="billing-address2-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">City <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="billing-city" name="city" placeholder="Jakarta Selatan" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="billing-city-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">State / Province <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="billing-state" name="state" placeholder="DKI Jakarta" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="billing-state-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Postal Code <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="billing-postcode" name="postcode" placeholder="12190" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="billing-postcode-error">Kolom ini wajib diisi.</div></div></div></div>
+</div>
+<!-- Section 4: Admin Form -->
+<div class="form-section hidden" id="section-admin">
+<div id="admin-fields"><div class="grid grid-cols-1 sm:grid-cols-2 gap-4"><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">First Name <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="admin-firstName" name="firstName" placeholder="cth. Budi" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="admin-firstName-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Last Name <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="admin-lastName" name="lastName" placeholder="cth. Santoso" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="admin-lastName-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Company / Organization <span class="text-slate-400 font-normal text-[11px]">(Opsional)</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="admin-companyName" name="companyName" placeholder="PT Nusantara Solusi (Opsional)" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="admin-companyName-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Email Address <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="admin-email" name="email" placeholder="budi@perusahaan.id" type="email"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="admin-email-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Phone Number <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="admin-phone" name="phone" placeholder="+62 812-3456-7890" type="tel"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="admin-phone-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Fax Number <span class="text-slate-400 font-normal text-[11px]">(Opsional)</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="admin-fax" name="fax" placeholder="+62 21-5550192 (Opsional)" type="tel"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="admin-fax-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5 sm:col-span-2"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Address Line 1 <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="admin-address1" name="address1" placeholder="Jl. Jenderal Sudirman No. 45" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="admin-address1-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5 sm:col-span-2"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Address Line 2 <span class="text-slate-400 font-normal text-[11px]">(Opsional)</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="admin-address2" name="address2" placeholder="Gedung Cyber 2 Lantai 12 (Opsional)" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="admin-address2-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">City <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="admin-city" name="city" placeholder="Jakarta Selatan" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="admin-city-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">State / Province <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="admin-state" name="state" placeholder="DKI Jakarta" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="admin-state-error">Kolom ini wajib diisi.</div></div><div class="flex flex-col gap-1.5"><label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+<span class="">Postal Code <span class="text-rose-500 font-bold">*</span></span>
+</label><input autocomplete="off" class="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="admin-postcode" name="postcode" placeholder="12190" type="text"/><div class="text-[11px] text-rose-500 font-medium hidden mt-0.5" id="admin-postcode-error">Kolom ini wajib diisi.</div></div></div></div>
+</div>
+<!-- Navigation Action Buttons -->
+<div class="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between gap-3">
+<button class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-slate-200 font-bold text-sm text-slate-700 hover:bg-slate-50 active:bg-slate-100 transition-colors" id="backButton" onclick="previousStep()">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="" id="backButtonText">Kembali</span>
+</button>
+<button class="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl font-bold text-sm text-white bg-brand-600 hover:bg-brand-700 active:scale-98 shadow-md shadow-brand-600/20 transition-all" id="nextButton" onclick="nextStep()">
+<span class="" id="nextButtonText">Lanjut ke Technical</span>
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- ==============================================
+         SCREEN 3: REVIEW & CONFIRMATION
+    ============================================== -->
+<section class="screen" id="screen-review">
+<div class="max-w-3xl mx-auto">
+<div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Tahap Konfirmasi Akhir</span>
+<h2 class="text-2xl font-extrabold text-slate-900 mt-1">Periksa Ringkasan Data</h2>
+<p class="text-xs sm:text-sm text-slate-500">Pastikan seluruh data kontak 4 bagian sudah benar sebelum dikirimkan ke sistem registry.</p>
+</div>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors self-start sm:self-auto" onclick="backToForm()">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">Edit Data</span>
+</button>
+</div>
+<div class="space-y-5" id="review-container">
+<!-- Populated dynamically -->
+</div>
+<!-- Form Actions for Submit -->
+<div class="mt-8 p-5 bg-white border border-slate-200 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-900">Validasi Otomatis Lengkap</p>
+<p class="text-[11px] text-slate-500">Formulir siap dikirim langsung melalui Apps Script API.</p>
+</div>
+</div>
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<button class="flex-1 sm:flex-none px-4 py-2.5 rounded-xl border border-slate-200 font-bold text-xs text-slate-700 hover:bg-slate-50 transition-colors" onclick="backToForm()">
+              Kembali
+            </button>
+<button class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl font-bold text-xs text-white bg-brand-600 hover:bg-brand-700 active:scale-98 shadow-md shadow-brand-600/25 transition-all" onclick="submitForm()">
+<span class="">Kirim Data Transfer</span>
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- ==============================================
+         SCREEN 4: SUCCESS / VERIFICATION
+    ============================================== -->
+<section class="screen" id="screen-verification">
+<div class="max-w-lg mx-auto bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 text-center shadow-md">
+<div class="w-20 h-20 rounded-full bg-emerald-50 text-emerald-600 border-4 border-emerald-100 flex items-center justify-center mx-auto mb-6 shadow-xs">
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+</div>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 mb-3">
+          Permintaan Berhasil Diterima
+        </span>
+<h2 class="text-2xl font-extrabold text-slate-900 mb-2">Data Sedang Diverifikasi</h2>
+<p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+          Data pemindahan billing domain Anda telah berhasil disimpan dan diteruskan ke tim registrasi domain untuk validasi otorisasi kepemilikan.
+        </p>
+<!-- Reference Code Box -->
+<div class="bg-slate-50 border border-dashed border-slate-300 rounded-2xl p-4 mb-6">
+<div class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">Nomor Referensi Transfer</div>
+<div class="text-lg sm:text-xl font-mono font-extrabold text-brand-700 tracking-wider" id="reference">
+            TRF-202502-0941
+          </div>
+<p class="text-[11px] text-slate-400 mt-1">Simpan kode ini untuk pelacakan tiket status billing.</p>
+</div>
+<div class="space-y-3">
+<button class="w-full py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors" onclick="location.reload()">
+            Kembali ke Halaman Awal
+          </button>
+</div>
+</div>
+</section>
+</main>
+<!-- LOADING OVERLAY -->
+<div class="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs hidden items-center justify-center p-4" id="loading">
+<div class="bg-white rounded-2xl p-6 sm:p-8 max-w-sm w-full text-center shadow-2xl border border-slate-100">
+<div class="w-12 h-12 border-4 border-slate-200 border-t-brand-600 rounded-full animate-spin mx-auto mb-4"></div>
+<h3 class="font-extrabold text-slate-900 text-base mb-1">Mengirim Data Billing...</h3>
+<p class="text-xs text-slate-500">Mohon menunggu sejenak dan jangan menutup atau merefresh halaman.</p>
+</div>
+</div>
+<!-- FOOTER -->
+<footer class="border-t border-slate-200/80 bg-white py-6">
+<div class="max-w-5xl mx-auto px-4 text-center text-xs text-slate-400">
+      © 2025 Domain Billing Transfer System • Standar Terakreditasi WHOIS &amp; Registry Management
+    </div>
+</footer>
+<!-- SCRIPT LOGIC -->
+<script>
+    /* ============================================================
+       FORM DEFINITIONS
+    ============================================================ */
+    const contactFields = [
+      { key: "firstName", label: "First Name", type: "text", required: true, placeholder: "cth. Budi" },
+      { key: "lastName", label: "Last Name", type: "text", required: true, placeholder: "cth. Santoso" },
+      { key: "companyName", label: "Company / Organization", type: "text", required: false, placeholder: "PT Nusantara Solusi (Opsional)" },
+      { key: "email", label: "Email Address", type: "email", required: true, placeholder: "budi@perusahaan.id" },
+      { key: "phone", label: "Phone Number", type: "tel", required: true, placeholder: "+62 812-3456-7890" },
+      { key: "fax", label: "Fax Number", type: "tel", required: false, placeholder: "+62 21-5550192 (Opsional)" },
+      { key: "address1", label: "Address Line 1", type: "text", required: true, full: true, placeholder: "Jl. Jenderal Sudirman No. 45" },
+      { key: "address2", label: "Address Line 2", type: "text", required: false, full: true, placeholder: "Gedung Cyber 2 Lantai 12 (Opsional)" },
+      { key: "city", label: "City", type: "text", required: true, placeholder: "Jakarta Selatan" },
+      { key: "state", label: "State / Province", type: "text", required: true, placeholder: "DKI Jakarta" },
+      { key: "postcode", label: "Postal Code", type: "text", required: true, placeholder: "12190" }
+    ];
+
+    const sections = ["registrant", "technical", "billing", "admin"];
+    const sectionNames = {
+      registrant: "Registrant (Pemilik)",
+      technical: "Technical (Teknis)",
+      billing: "Billing (Keuangan)",
+      admin: "Admin (Administratif)"
+    };
+
+    let currentStep = 1;
+    let isAutoSyncEnabled = true;
+
+    const formData = {
+      registrant: {},
+      technical: {},
+      billing: {},
+      admin: {}
+    };
+
+    /* ============================================================
+       INIT
+    ============================================================ */
+    document.addEventListener("DOMContentLoaded", function() {
+      generateForms();
+    });
+
+    function generateForms() {
+      sections.forEach(function(section) {
+        const container = document.getElementById(section + "-fields");
+        if (!container) return;
+        container.innerHTML = "";
+
+        const grid = document.createElement("div");
+        grid.className = "grid grid-cols-1 sm:grid-cols-2 gap-4";
+
+        contactFields.forEach(function(field) {
+          const group = document.createElement("div");
+          group.className = "flex flex-col gap-1.5" + (field.full ? " sm:col-span-2" : "");
+
+          const label = document.createElement("label");
+          label.className = "text-xs font-bold text-slate-700 flex items-center justify-between";
+          label.innerHTML = `
+            <span>${field.label} ${field.required ? '<span class="text-rose-500 font-bold">*</span>' : '<span class="text-slate-400 font-normal text-[11px]">(Opsional)</span>'}</span>
+          `;
+
+          const input = document.createElement("input");
+          input.type = field.type;
+          input.id = section + "-" + field.key;
+          input.name = field.key;
+          input.placeholder = field.placeholder || "";
+          input.autocomplete = "off";
+          input.className = "w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all";
+
+          // Input listener for auto-syncing if user types on registrant
+          if (section === "registrant") {
+            input.addEventListener("input", function() {
+              if (isAutoSyncEnabled) {
+                formData.registrant[field.key] = this.value;
+                syncFieldToOthers(field.key, this.value);
+              }
+            });
+          }
+
+          const error = document.createElement("div");
+          error.className = "text-[11px] text-rose-500 font-medium hidden mt-0.5";
+          error.id = section + "-" + field.key + "-error";
+          error.innerText = "Kolom ini wajib diisi.";
+
+          group.appendChild(label);
+          group.appendChild(input);
+          group.appendChild(error);
+          grid.appendChild(group);
+        });
+
+        container.appendChild(grid);
+      });
+      updateAutoSyncFields();
+    }
+
+    /* Auto-sync individual field keystrokes */
+    function syncFieldToOthers(key, value) {
+      ["technical", "billing", "admin"].forEach(sec => {
+        const targetInput = document.getElementById(sec + "-" + key);
+        if (targetInput) {
+          targetInput.value = value;
+          formData[sec][key] = value;
+        }
+      });
+    }
+
+    function toggleAutoSync(enabled) {
+      isAutoSyncEnabled = enabled;
+      if (enabled) {
+        resyncFromRegistrant();
+      }
+      updateAutoSyncFields();
+    }
+
+    function resyncFromRegistrant() {
+      contactFields.forEach(field => {
+        const registrantInput = document.getElementById("registrant-" + field.key);
+        const val = registrantInput ? registrantInput.value : (formData.registrant[field.key] || "");
+        formData.registrant[field.key] = val;
+        syncFieldToOthers(field.key, val);
+      });
+      updateAutoSyncFields();
+    }
+
+    function updateAutoSyncFields() {
+      ["technical", "billing", "admin"].forEach(function(section) {
+        contactFields.forEach(function(field) {
+          const input = document.getElementById(section + "-" + field.key);
+          if (!input) return;
+          input.readOnly = isAutoSyncEnabled;
+          input.classList.toggle("bg-slate-50", isAutoSyncEnabled);
+          input.classList.toggle("cursor-not-allowed", isAutoSyncEnabled);
+        });
+      });
+    }
+
+    /* ============================================================
+       INTRO SCREEN CONTROLS
+    ============================================================ */
+    function toggleStartButton() {
+      const checkbox = document.getElementById("agreement");
+      const button = document.getElementById("startButton");
+      button.disabled = !checkbox.checked;
+    }
+
+    function startForm() {
+      showScreen("screen-form");
+      currentStep = 1;
+      updateStepUI();
+    }
+
+    /* ============================================================
+       STEPPER NAVIGATION
+    ============================================================ */
+    function nextStep() {
+      clearStepNotice();
+      if (!validateCurrentStep()) {
+        return;
+      }
+      saveCurrentStep();
+
+      // If auto-sync is on and currently at registrant, replicate all data
+      if (currentStep === 1 && isAutoSyncEnabled) {
+        resyncFromRegistrant();
+      }
+
+      if (currentStep < 4) {
+        currentStep++;
+        updateStepUI();
+      } else {
+        buildReview();
+        showScreen("screen-review");
+      }
+    }
+
+    function previousStep() {
+      saveCurrentStep();
+      if (currentStep > 1) {
+        currentStep--;
+        updateStepUI();
+      } else {
+        showScreen("screen-intro");
+      }
+    }
+
+    function contactIsComplete(section) {
+      return contactFields.every(function(field) {
+        const value = String(formData[section][field.key] || "").trim();
+        if (field.required && !value) return false;
+        return field.key !== "email" || !value || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      });
+    }
+
+    function isSameAsRegistrant(section) {
+      return contactFields.every(function(field) {
+        return String(formData[section][field.key] || "").trim() === String(formData.registrant[field.key] || "").trim();
+      });
+    }
+
+    function showStepNotice(message) {
+      const notice = document.getElementById("stepNotice");
+      notice.innerText = message;
+      notice.classList.remove("hidden");
+    }
+
+    function clearStepNotice() {
+      document.getElementById("stepNotice").classList.add("hidden");
+    }
+
+    function goToStep(stepNumber) {
+      if (stepNumber === currentStep) return;
+      clearStepNotice();
+      saveCurrentStep();
+      if (stepNumber < currentStep) {
+        currentStep = stepNumber;
+        updateStepUI();
+        return;
+      }
+      if (stepNumber === currentStep + 1) {
+        if (!validateCurrentStep()) return;
+        if (currentStep === 1 && isAutoSyncEnabled) resyncFromRegistrant();
+        currentStep = stepNumber;
+        updateStepUI();
+        return;
+      }
+      if (!validateCurrentStep()) return;
+      if (currentStep === 1 && isAutoSyncEnabled) resyncFromRegistrant();
+      for (let index = currentStep; index < stepNumber; index++) {
+        const section = sections[index - 1];
+        if (!contactIsComplete(section) || !isSameAsRegistrant(section)) {
+          showStepNotice("Selesaikan kontak secara berurutan. Lompatan hanya tersedia bila data kontak yang dilewati sama persis dengan Registrant.");
+          return;
+        }
+      }
+      currentStep = stepNumber;
+      updateStepUI();
+    }
+
+    function updateStepUI() {
+      // Toggle sections
+      sections.forEach((sec, idx) => {
+        const el = document.getElementById("section-" + sec);
+        if (el) {
+          if (idx + 1 === currentStep) {
+            el.classList.remove("hidden");
+          } else {
+            el.classList.add("hidden");
+          }
+        }
+      });
+
+      // Update Top Badge & Title
+      const currentKey = sections[currentStep - 1];
+      document.getElementById("currentSectionBadge").innerText = `Langkah ${currentStep} dari 4`;
+      document.getElementById("currentSectionHeading").innerText = sectionNames[currentKey];
+
+      // Auto-copy Banner (only on registrant)
+      const copyBanner = document.getElementById("copyToAllBanner");
+      const syncNotice = document.getElementById("syncNoticeNonRegistrant");
+      if (currentStep === 1) {
+        copyBanner.classList.remove("hidden");
+        syncNotice.classList.add("hidden");
+      } else {
+        copyBanner.classList.add("hidden");
+        if (isAutoSyncEnabled) {
+          syncNotice.classList.remove("hidden");
+        } else {
+          syncNotice.classList.add("hidden");
+        }
+      }
+
+      // Update Step buttons styling
+      sections.forEach((_, idx) => {
+        const btn = document.getElementById("step-" + (idx + 1));
+        const badge = btn.querySelector(".step-badge");
+        if (!btn || !badge) return;
+
+        btn.classList.remove("border-brand-500", "bg-brand-50/70", "text-brand-700", "border-emerald-300", "bg-emerald-50/50", "text-emerald-700", "border-slate-200", "text-slate-500");
+        badge.classList.remove("bg-brand-600", "text-white", "bg-emerald-600", "bg-slate-200", "text-slate-600");
+
+        if (idx + 1 === currentStep) {
+          btn.classList.add("border-brand-500", "bg-brand-50/70", "text-brand-700");
+          badge.classList.add("bg-brand-600", "text-white");
+        } else if (idx + 1 < currentStep) {
+          btn.classList.add("border-emerald-300", "bg-emerald-50/50", "text-emerald-700");
+          badge.classList.add("bg-emerald-600", "text-white");
+          badge.innerHTML = "✓";
+        } else {
+          btn.classList.add("border-slate-200", "text-slate-500");
+          badge.classList.add("bg-slate-200", "text-slate-600");
+          badge.innerHTML = (idx + 1);
+        }
+      });
+
+      // Update progress bar
+      document.getElementById("progressBar").style.width = (currentStep * 25) + "%";
+
+      // Buttons label
+      document.getElementById("backButtonText").innerText = currentStep === 1 ? "Kembali ke Intro" : "Sebelumnya";
+      
+      const nextText = document.getElementById("nextButtonText");
+      if (currentStep === 4) {
+        nextText.innerText = "Periksa Ringkasan Data";
+      } else {
+        const nextKey = sections[currentStep];
+        nextText.innerText = "Lanjut ke " + (nextKey ? nextKey.charAt(0).toUpperCase() + nextKey.slice(1) : "");
+      }
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    /* ============================================================
+       VALIDATION
+    ============================================================ */
+    function validateCurrentStep() {
+      const section = sections[currentStep - 1];
+      let valid = true;
+      let firstErrorEl = null;
+
+      contactFields.forEach(function(field) {
+        const input = document.getElementById(section + "-" + field.key);
+        const error = document.getElementById(section + "-" + field.key + "-error");
+        if (!input || !error) return;
+
+        input.classList.remove("border-rose-500", "bg-rose-50/50");
+        error.classList.add("hidden");
+
+        const val = input.value.trim();
+
+        if (field.required && !val) {
+          input.classList.add("border-rose-500", "bg-rose-50/50");
+          error.innerText = `${field.label} wajib diisi.`;
+          error.classList.remove("hidden");
+          valid = false;
+          if (!firstErrorEl) firstErrorEl = input;
+        } else if (field.key === "email" && val) {
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailPattern.test(val)) {
+            input.classList.add("border-rose-500", "bg-rose-50/50");
+            error.innerText = "Format email tidak valid (harus mengandung @ dan domain).";
+            error.classList.remove("hidden");
+            valid = false;
+            if (!firstErrorEl) firstErrorEl = input;
+          }
+        }
+      });
+
+      if (!valid && firstErrorEl) {
+        firstErrorEl.focus();
+      }
+      return valid;
+    }
+
+    function saveCurrentStep() {
+      const section = sections[currentStep - 1];
+      contactFields.forEach(function(field) {
+        const input = document.getElementById(section + "-" + field.key);
+        if (input) {
+          formData[section][field.key] = input.value.trim();
+        }
+      });
+    }
+
+    /* ============================================================
+       REVIEW
+    ============================================================ */
+    function buildReview() {
+      const reviewContainer = document.getElementById("review-container");
+      let html = "";
+
+      sections.forEach(function(section) {
+        html += `
+          <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-brand-600"></span>
+                <h3 class="font-bold text-slate-900 text-sm sm:text-base">${sectionNames[section]}</h3>
+              </div>
+              <button onclick="jumpToEditSection('${section}')" class="text-xs font-bold text-brand-600 hover:text-brand-800">
+                Ubah
+              </button>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        `;
+
+        contactFields.forEach(function(field) {
+          const val = formData[section][field.key] || '<span class="text-slate-300 font-normal italic">Tidak diisi</span>';
+          html += `
+            <div class="p-2.5 bg-slate-50/80 rounded-xl ${field.full ? 'col-span-2 sm:col-span-3' : ''}">
+              <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-0.5">${field.label}</div>
+              <div class="text-xs font-bold text-slate-800 break-words">${escapeHtml(val)}</div>
+            </div>
+          `;
+        });
+
+        html += `
+            </div>
+          </div>
+        `;
+      });
+
+      reviewContainer.innerHTML = html;
+    }
+
+    function jumpToEditSection(sec) {
+      const idx = sections.indexOf(sec);
+      if (idx !== -1) {
+        currentStep = idx + 1;
+        updateStepUI();
+        showScreen("screen-form");
+      }
+    }
+
+    function backToForm() {
+      currentStep = 4;
+      updateStepUI();
+      showScreen("screen-form");
+    }
+
+    function escapeHtml(value) {
+      if (value.includes("<span")) return value; // allow empty badge
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    /* ============================================================
+       SUBMIT
+    ============================================================ */
+    async function submitForm() {
+      document.getElementById("loading").classList.remove("hidden");
+      document.getElementById("loading").classList.add("flex");
+      try {
+        const domain = new URLSearchParams(window.location.search).get("domain") || "startupnusantara.id";
+        const response = await fetch("/api/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ domain: domain, contacts: formData, autoCopy: isAutoSyncEnabled })
+        });
+        const result = await response.json();
+        if (!response.ok || !result.success) throw new Error(result.message || "Data tidak dapat dikirim.");
+        document.getElementById("reference").innerText = result.submissionId;
+        showScreen("screen-verification");
+      } catch (error) {
+        alert("Gagal mengirim data: " + (error.message || "Terjadi kesalahan koneksi."));
+      } finally {
+        document.getElementById("loading").classList.add("hidden");
+        document.getElementById("loading").classList.remove("flex");
+      }
+    }
+
+    /* ============================================================
+       SCREEN SWITCHER
+    ============================================================ */
+    function showScreen(id) {
+      document.querySelectorAll(".screen").forEach(function(screen) {
+        screen.classList.remove("active");
+      });
+      const target = document.getElementById(id);
+      if (target) {
+        target.classList.add("active");
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  </script>
+<script>
+  function toggleDualConsent() {
+    const cb1 = document.getElementById('agreement1');
+    const cb2 = document.getElementById('agreement2');
+    const button = document.getElementById('startButton');
+    if (button) {
+      button.disabled = !(cb1 && cb1.checked && cb2 && cb2.checked);
+    }
+  }
+</script></body></html>
